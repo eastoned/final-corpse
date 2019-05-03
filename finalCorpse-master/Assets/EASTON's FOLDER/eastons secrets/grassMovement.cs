@@ -41,7 +41,10 @@ public class grassMovement : MonoBehaviour
         grassSound = GetComponent<AudioSource>();
         passed = false;
 
-        transform.position = cameraMovementEaston.grassPositions[System.Convert.ToInt32(transform.name)];
+        if(cameraMovementEaston.eastonLevel > 0){
+            transform.position = cameraMovementEaston.grassPositions[System.Convert.ToInt32(transform.name)];
+        }
+
 
     }
 
