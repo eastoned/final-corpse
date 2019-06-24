@@ -28,6 +28,8 @@ public class Inspectable : MonoBehaviour {
 		transform.parent = cam;
 		transform.localPosition = Vector3.forward * distanceFromCamera;
 
+		interact.Drag.AddListener(Rotate);
+
 		fadeSpeed = cam.GetComponent<InspectCamera> ().FadeSpeed * 1.5f;
 		mat = GetComponent<MeshRenderer> ().material;
 

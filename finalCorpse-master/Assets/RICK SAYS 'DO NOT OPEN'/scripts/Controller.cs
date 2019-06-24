@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Controller : MonoBehaviour {
+	public delegate void OnEnterInspect();
+	public event OnEnterInspect onEnterInspect;
+		
+	public delegate void OnExitInspect();
+	public event OnExitInspect onExitInspect;
+
 	public Camera liveCamera, inspectCamera;
-	private Camera targetCamera;
+	[SerializeField] Camera targetCamera;
 
 	// Use this for initialization
 	void Start () {
@@ -19,10 +25,14 @@ public class Controller : MonoBehaviour {
 	public void TogglePerspective(){
 		targetCamera.GetComponent<Cam> ().Activated = false;
 
-		if (targetCamera == liveCamera)
+		if (targetCamera == liveCamera){
 			targetCamera = inspectCamera;
-		else
+			onEnterInspect();
+		}
+		else{
 			targetCamera = liveCamera;
+			onExitInspect();
+		}
 
 		targetCamera.GetComponent<Cam> ().Activated = true;
 	}

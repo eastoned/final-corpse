@@ -8,7 +8,7 @@ public class Background : MonoBehaviour {
 	private Material mat;
 
 	private float alpha;
-	private float maxAlpha = .5f;
+	private float maxAlpha = 1f;
 	private float fadeSpeed;
 
 	private bool active;

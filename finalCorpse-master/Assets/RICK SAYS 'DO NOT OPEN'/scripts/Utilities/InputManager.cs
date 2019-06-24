@@ -27,6 +27,7 @@ public class InputManager : MonoBehaviour
     RaycastHit hit;
     public LayerMask mask;
 
+    bool ui = false;
 
 	void Awake()
 	{
@@ -79,7 +80,12 @@ public class InputManager : MonoBehaviour
         ray = camera.ScreenPointToRay(v);
         hit = new RaycastHit();
 
-        if (Physics.Raycast(ray, out hit, 1000f, mask))
+        if(EventSystem.current.IsPointerOverGameObject())
+            ui = true;
+        else
+            ui = false;
+
+        if (Physics.Raycast(ray, out hit, 1000f, mask) && !ui)
         {
             obj = hit.collider.GetComponent<Interactable>();
 
@@ -115,13 +121,13 @@ public class InputManager : MonoBehaviour
     {
         if (interacted)
         {
-            if(!dragged)
+            if(!dragged && !ui)
                 obj.Click.Invoke();
             
             obj.Release.Invoke();
         }
 
-		if (!dragged)
+		if (!dragged && !ui)
 			Click.Invoke ();
 		Release.Invoke ();
 

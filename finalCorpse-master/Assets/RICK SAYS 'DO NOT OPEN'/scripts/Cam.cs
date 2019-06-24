@@ -11,7 +11,7 @@ public class Cam : MonoBehaviour {
 	public virtual void Awake(){
 		cam = GetComponent<Camera> ();
 		input = GetComponent<InputManager> ();
-		//controller = GameObject.Find ("Controller").GetComponent<Controller> ();
+		controller = GameObject.Find ("Controller").GetComponent<Controller> ();
 	}
 
 	// Use this for initialization

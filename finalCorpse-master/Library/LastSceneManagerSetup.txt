@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/EASTON's FOLDER/EastonScene.unity
+- path: Assets/RICK SAYS 'DO NOT OPEN'/scenes/rick.unity
   isLoaded: 1
   isActive: 1

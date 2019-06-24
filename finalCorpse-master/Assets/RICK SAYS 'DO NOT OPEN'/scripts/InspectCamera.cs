@@ -10,6 +10,8 @@ public class InspectCamera : Cam {
 	public RawImage img;
 	private Material target;
 	private Background background;
+	
+	public Description description;
 
 	public override void Awake(){
 		base.Awake ();
@@ -35,6 +37,8 @@ public class InspectCamera : Cam {
 	public void AttemptToggle(){
 		if (input.Hit.collider == null || input.Hit.collider.GetComponent<Interactable>() == null) {
 			controller.TogglePerspective ();
+
+			description.Read("");
 		}
 	}
 
