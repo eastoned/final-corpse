@@ -6,7 +6,7 @@ public class RhythmProducer : MonoBehaviour {
     public AudioClip[] basicBeats;
     public AudioSource beatSource;
 
-    public bool playedAudio, showRhythm, changeRhythm;
+    public bool scheduledAudio, showRhythm, changeRhythm;
 
     public int timeScale;
 
@@ -35,12 +35,6 @@ public class RhythmProducer : MonoBehaviour {
             // rhythm creation / beat visual
             changeRhythm = true;
         }
-
-        //else if (e.TickMask[TickValue.Quarter])
-        //{
-        //    // rhythm creation / beat visual
-        //    changeRhythm = true;
-        //}
 
         switch (timeScale)
         {
@@ -106,6 +100,54 @@ public class RhythmProducer : MonoBehaviour {
         AudioRhythm();
     }
 
+    public void AudioRhythm()
+    {
+        //i dont have audio scheduled
+        if (!scheduledAudio)
+        {
+            //schedule audio
+            SwitchTimeScale();
+            scheduledAudio = true;
+        }
+        //i have audio scheduled
+        else
+        {
+            //no sound is playing
+            if (!beatSource.isPlaying)
+            {
+                //it's been a meter and i need to change rhythm
+                if (changeRhythm)
+                {
+                    ChangeRhythm();
+                }
+
+                //schedule audio
+                SwitchTimeScale();
+                scheduledAudio = false;
+            }
+        }
+
+        //for showing smoke when a note is destined to play
+        if (showRhythm)
+        {
+            ShowRhythm();
+        }
+    }
+
+    void ChangeRhythm()
+    {
+        float randomChance = Random.Range(0, 100);
+
+        //randomize clip and tempo
+        if (randomChance > 50)
+        {
+            RandomClip();
+            RandomTempo();
+        }
+
+        changeRhythm = false;
+    }
+
     public void RandomTempo()
     {
         int randomTempo = Random.Range(0, 4);
@@ -118,57 +160,28 @@ public class RhythmProducer : MonoBehaviour {
         beatSource.clip = basicBeats[randomClip];
     }
 
-    public void AudioRhythm()
+    void ShowRhythm()
     {
-        if (!playedAudio)
+        //play anim & smoke
+        animator.Play();
+        smokeGen = smokeParticles[smokeCounter].GetComponent<SmokeGenerator>();
+        smokeGen.SmokeIt();
+        smokeParticles[smokeCounter].Play();
+       
+        //increment smoke particle counter
+        if (smokeCounter < 2)
         {
-            SwitchTimeScale();
-            playedAudio = true;
+            smokeCounter++;
         }
         else
         {
-            if (!beatSource.isPlaying)
-            {
-                if (changeRhythm)
-                {
-                    float randomChance = Random.Range(0, 100);
-
-                    if(randomChance > 50)
-                    {
-                        RandomClip();
-                        RandomTempo();
-                    }
-                    
-                    changeRhythm = false;
-                }
-
-                SwitchTimeScale();
-                playedAudio = false;
-
-            }
+            smokeCounter = 0;
         }
 
-        //for showing smoke when a note is destined to play
-        if (showRhythm)
-        {
-            animator.Play();
-            smokeGen = smokeParticles[smokeCounter].GetComponent<SmokeGenerator>();
-            smokeGen.SmokeIt();
-            smokeParticles[smokeCounter].Play();
-            showRhythm = false;
-
-            if(smokeCounter < 2)
-            {
-                smokeCounter++;
-            }
-            else
-            {
-                smokeCounter = 0;
-            }
-           
-        }
+        showRhythm = false;
     }
 
+    //schedules audio at a clock tick
     public void SwitchTimeScale()
     {
         switch (timeScale)

@@ -8,12 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/RICK SAYS 'DO NOT OPEN'/scenes/rick.unity
     guid: 48c530d56e0d21a4d8c972ac149cd331
-  - enabled: 1
+  - enabled: 0
     path: Assets/FRANKIE'S SHIT/frankie.unity
     guid: b57af9ce006171a40bf36b80c7037860
   - enabled: 1
     path: Assets/KAS/Scenes/the pilot.unity
     guid: 8588074fe7d305444a69cc3d41a68a81
   - enabled: 1
+    path: Assets/JULIAN dont look/what are you doing here stop/julianScene.unity
+    guid: 0a21d1878a1604f618b167899136ca92
+  - enabled: 1
+    path: Assets/FLAN/flan scene.unity
+    guid: bb6101275a352413fbd5e855a0b4fd54
+  - enabled: 1
     path: Assets/EASTON's FOLDER/EastonScene.unity
     guid: 860dbe09a4e864778a965fb8eca11894
+  m_configObjects: {}

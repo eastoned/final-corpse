@@ -40,6 +40,7 @@ public class Trigger : MonoBehaviour {
         {
             if (!hasActivated)
             {
+                //Obj trigger
                 if (hasObjects)
                 {
                     //if greater than 1
@@ -125,6 +126,7 @@ public class Trigger : MonoBehaviour {
                     }
                 }
 
+                //scene transition trigger
                 if (transitionScene)
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

@@ -21,7 +21,7 @@ public class VideoProducer : MonoBehaviour
     private VideoPlayer vidPlayer;
 
     public List<VideoClip> naturalDisasters = new List<VideoClip>();
-    //public List<VideoClip> spaceTravel = new List<VideoClip>();
+    public List<VideoClip> spaceTravel = new List<VideoClip>();
     public bool staticDeath;
 
     public bool inOrOut;
@@ -34,7 +34,7 @@ public class VideoProducer : MonoBehaviour
     public float shiftSpeed;
 
     AudioSource screenAudio;
-
+    public bool ascension;
 
     void Start()
     {
@@ -44,8 +44,8 @@ public class VideoProducer : MonoBehaviour
         screenAudio = GetComponent<AudioSource>();
         Random.InitState(System.DateTime.Now.Millisecond);
         ChangeVidClip();
-        StartCoroutine(WaitForStatic());
         mp = GameObject.FindGameObjectWithTag("Player").GetComponent<MovePlayer>();
+        StartCoroutine(WaitForSpaceShips());
     }
 
     void Update()
@@ -109,23 +109,45 @@ public class VideoProducer : MonoBehaviour
     //call this to change the clip
     public void ChangeVidClip()
     {
-        int randomClip = Random.Range(0, naturalDisasters.Count);
-
-        //rerun until we find a clip that isn't being used
-        if (vidList.clipsBeingUsed[randomClip])
+        //not ascending
+        if (!ascension)
         {
-            ChangeVidClip();
+            int randomClip = Random.Range(0, naturalDisasters.Count);
+
+            //rerun until we find a clip that isn't being used
+            if (vidList.clipsBeingUsed[randomClip])
+            {
+                ChangeVidClip();
+            }
+            //clip is not being used, so we switch it
+            else
+            {
+                //uncheck last clip being used
+                int index = naturalDisasters.IndexOf(vidPlayer.clip);
+                vidList.clipsBeingUsed[index] = false;
+
+                //set new clip and check it as being used
+                vidPlayer.clip = naturalDisasters[randomClip];
+                vidList.clipsBeingUsed[randomClip] = true;
+
+                //play clip, switch depth movement
+                vidPlayer.Play();
+                inOrOut = !inOrOut;
+                resetTimer = Random.Range(0.5f, 5f);
+                hasReset = true;
+
+                //PlayStatic();
+                Debug.Log("changed");
+            }
         }
-        //clip is not being used, so we switch it
+        //just pull from one of the space travel vids
         else
         {
-            //uncheck last clip being used
-            int index = naturalDisasters.IndexOf(vidPlayer.clip);
-            vidList.clipsBeingUsed[index] = false;
+            //random space clip
+            int randomClip = Random.Range(0, spaceTravel.Count);
 
             //set new clip and check it as being used
-            vidPlayer.clip = naturalDisasters[randomClip];
-            vidList.clipsBeingUsed[randomClip] = true;
+            vidPlayer.clip = spaceTravel[randomClip];
 
             //play clip, switch depth movement
             vidPlayer.Play();
@@ -137,27 +159,30 @@ public class VideoProducer : MonoBehaviour
             Debug.Log("changed");
         }
 
+
     }
 
     //called at start
-    //IEnumerator WaitForSpaceShips()
-    //{
-    //    yield return new WaitForSeconds(70);
-    //    ascension = true;
+    IEnumerator WaitForSpaceShips()
+    {
+        yield return new WaitForSeconds(70);
+        ascension = true;
 
-    //    //reset vidlist
-    //    for(int i = 0; i < vidList.clipsBeingUsed.Count; i++)
-    //    {
-    //        vidList.clipsBeingUsed[i] = false;
-    //    }
+        //reset vidlist
+        for (int i = 0; i < vidList.clipsBeingUsed.Count; i++)
+        {
+            vidList.clipsBeingUsed[i] = false;
+        }
 
-    //    StartCoroutine(WaitForStatic());
-    //}
+        ChangeVidClip();
+
+        StartCoroutine(WaitForStatic());
+    }
 
     //called after ascension
     IEnumerator WaitForStatic()
     {
-        yield return new WaitForSeconds(90);
+        yield return new WaitForSeconds(20);
         staticDeath = true;
         vidPlayer.Stop();
         vidPlayer.clip = null;

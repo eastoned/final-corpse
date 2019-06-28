@@ -1,8 +1,0 @@
-Base path: /Applications/2018.3.5f1/Unity.app/Contents
-Cmd: initializeCompiler
-Cmd: compileComputeKernel
-  api=14 insize=3273 outsize=6585 ok=1
-Cmd: compileComputeKernel
-  api=14 insize=1526 outsize=781 ok=1
-Cmd: initializeCompiler
-Cmd: initializeCompiler

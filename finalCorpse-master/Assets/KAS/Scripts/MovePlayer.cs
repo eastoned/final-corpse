@@ -124,10 +124,11 @@ public class MovePlayer : MonoBehaviour {
             }
         }
 
+        //fly upward
         if (staticDeath)
         {
-            staticFallSpeed += 0.5f;
-            transform.Translate(0, -staticFallSpeed, 0);
+            staticFallSpeed += 1.0f;
+            transform.Translate(0, staticFallSpeed, 0);
         }
 
         //lerps fov 
@@ -198,14 +199,6 @@ public class MovePlayer : MonoBehaviour {
             transform.localEulerAngles = new Vector3(0, -135, 0);
             myCam.transform.localEulerAngles = new Vector3(-25, 3.69f, 0);
         }
-
-       
-
-        //when you arrive at the center of the factory room, start cinema
-        //perhaps lock camera on view of the 9 TVs
-        //need more footage and to tune their symmetry with audioSpectrum
-        //dig into those post processing effects
-        //play with arrangement and # of tvs in relation to octave banding
     }
 
 

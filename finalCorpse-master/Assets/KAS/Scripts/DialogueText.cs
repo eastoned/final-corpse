@@ -170,5 +170,13 @@ public class DialogueText : MonoBehaviour
         myVoices[currentVoice].clip = mySounds[randomSound];
         myVoices[currentVoice].PlayOneShot(mySounds[randomSound]);
     }
+
+    public void DeactivateVoices()
+    {
+        for(int i = 0; i < myVoices.Length; i++)
+        {
+            myVoices[i].gameObject.SetActive(false);
+        }
+    }
 }
 
