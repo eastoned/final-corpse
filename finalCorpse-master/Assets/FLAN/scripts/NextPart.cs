@@ -12,6 +12,7 @@ public class NextPart : MonoBehaviour {
 	float messagetimer; 
 	public static bool part2; 
 	bool messageUP; 
+    float timer; 
 
 	// Use this for initialization
 	void Start () {
@@ -22,12 +23,13 @@ public class NextPart : MonoBehaviour {
 		RenderSettings.fogColor = new Color (.1f,.7f,.5f,1); 
 		RenderSettings.fogDensity = 0.005f; 
 		messagetimer = 0; 
+        timer=0; 
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+        timer += Time.deltaTime; 
 		if (part2 == true) {
 			StartCoroutine ("Transition"); 
 			RenderSettings.fogDensity = 0; 
@@ -41,21 +43,22 @@ public class NextPart : MonoBehaviour {
 			}
 		}
 		
-	}
+	
 
-	void OnTriggerEnter(Collider collider){
-		if (collider.gameObject.name == "specialboy") {
+        if (timer>= 35){
+             
+            part2 = true; 
+        }
+	
+		
 			if (assassin.assassinCount == 0) {
 				//Debug.Log ("NEXT PART GO"); 
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                
 				part2 = true; 
-			} else {
-				messagetimer = 0; 
-				messageUP = true; 
-				message.SetActive (true); 
-			}
-		}
-	}
+            }
+    }
+		
+	
 
 	IEnumerator Transition(){
 		
