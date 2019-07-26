@@ -92,6 +92,8 @@ public class RhythmProducer : MonoBehaviour {
         RandomClip();
 
         RandomTempo();
+
+        RandomPitch();
     }
 
     // Update is called once per frame
@@ -143,6 +145,7 @@ public class RhythmProducer : MonoBehaviour {
         {
             RandomClip();
             RandomTempo();
+            RandomPitch();
         }
 
         changeRhythm = false;
@@ -158,6 +161,12 @@ public class RhythmProducer : MonoBehaviour {
     {
         int randomClip = Random.Range(0, basicBeats.Length);
         beatSource.clip = basicBeats[randomClip];
+    }
+
+    public void RandomPitch()
+    {
+        float randomPitch = Random.Range(0.8f, 1.2f);
+        beatSource.pitch = randomPitch;
     }
 
     void ShowRhythm()

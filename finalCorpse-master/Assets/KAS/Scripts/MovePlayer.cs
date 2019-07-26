@@ -127,7 +127,7 @@ public class MovePlayer : MonoBehaviour {
         //fly upward
         if (staticDeath)
         {
-            staticFallSpeed += 1.0f;
+            staticFallSpeed += 2.5f;
             transform.Translate(0, staticFallSpeed, 0);
         }
 

@@ -10,6 +10,8 @@ public class PostProcessor : MonoBehaviour
     public PostProcessingProfile myPost;
     public ColorGradingModel.Settings colorGrader;
 
+    public int level;
+
     //calibrate all the post processing values at start because these change outside playmode
     void Start()
     {
@@ -25,7 +27,7 @@ public class PostProcessor : MonoBehaviour
 
     void Update()
     {
-        colorGrader.basic.hueShift = spectrum.MeanLevels[2] * 500;
+        colorGrader.basic.hueShift = spectrum.MeanLevels[level] * 500;
 
         myPost.colorGrading.settings = colorGrader;
 

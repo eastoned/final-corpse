@@ -165,7 +165,7 @@ public class VideoProducer : MonoBehaviour
     //called at start
     IEnumerator WaitForSpaceShips()
     {
-        yield return new WaitForSeconds(70);
+        yield return new WaitForSeconds(90);
         ascension = true;
 
         //reset vidlist
@@ -182,7 +182,7 @@ public class VideoProducer : MonoBehaviour
     //called after ascension
     IEnumerator WaitForStatic()
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(10);
         staticDeath = true;
         vidPlayer.Stop();
         vidPlayer.clip = null;
