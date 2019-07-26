@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class part2 : MonoBehaviour {
 
@@ -21,5 +22,8 @@ public class part2 : MonoBehaviour {
 			gameObject.GetComponent<Camera> ().fieldOfView += .5f;
 
 		}
+        if (timer >= 8){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
 	}
 }
