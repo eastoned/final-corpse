@@ -58,7 +58,6 @@ public class cameraMovementEaston : MonoBehaviour
     void Play(){
         if (Input.GetMouseButton(0))
         {
-
             wind.volume = Mathf.Lerp(wind.volume, 1, Time.deltaTime);
             night.volume = Mathf.Lerp(night.volume, 0, Time.deltaTime);
             //move forward
@@ -68,7 +67,7 @@ public class cameraMovementEaston : MonoBehaviour
 
 
             BloomModel.Settings editBloom = post.bloom.settings;
-            editBloom.bloom.intensity += eastonLevel * Time.deltaTime/10f;
+            editBloom.bloom.intensity += PlayerPrefs.GetInt("eastonLevel") * Time.deltaTime/10f;
             post.bloom.settings = editBloom;
 
             fadeOutImage.rectTransform.localPosition = Vector3.Lerp(fadeOutImage.rectTransform.localPosition, new Vector3(0, -550, 0), Time.deltaTime);
@@ -80,7 +79,7 @@ public class cameraMovementEaston : MonoBehaviour
             wind.volume = Mathf.Lerp(wind.volume, 0, Time.deltaTime);
             night.volume = Mathf.Lerp(night.volume, 1, Time.deltaTime);
             //fadeOutImage.color = Color.Lerp(fadeOutImage.color, new Color(0, 0, 0, 1), Time.deltaTime / 3f);
-            if(Time.frameCount%(55/(eastonLevel+1)) == 0){
+            if(Time.frameCount%(55/(PlayerPrefs.GetInt("eastonLevel")+1)) == 0){
                 fadeOutImage.rectTransform.localPosition += new Vector3(0, 30, 0);
                 fadeOutImage.GetComponent<AudioSource>().Play();
 
@@ -112,6 +111,8 @@ public class cameraMovementEaston : MonoBehaviour
     {
         Debug.Log("the current easton level is " + eastonLevel);
         eastonLevel += 1;
+        PlayerPrefs.SetInt("eastonLevel", eastonLevel);
+        PlayerPrefs.Save();
         //put next scene here
         SceneManager.LoadScene(0);
     }

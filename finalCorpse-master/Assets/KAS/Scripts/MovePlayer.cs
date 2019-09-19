@@ -47,6 +47,9 @@ public class MovePlayer : MonoBehaviour {
 
         myPost.colorGrading.settings = colorGrader;
 
+        //turn off cursor 
+        Cursor.visible = false;
+
         //set our movement points
         movementPoints = new Transform[movementPointHolder.childCount];
         for (int i =0; i < movementPointHolder.childCount; i++)

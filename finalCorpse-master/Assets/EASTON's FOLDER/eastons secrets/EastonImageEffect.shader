@@ -10,11 +10,6 @@
         // No culling or depth
         Cull Off ZWrite Off ZTest Always
 
-        GrabPass
-        {
-            "_PR"
-
-        }
 
         Pass
         {
@@ -69,12 +64,7 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-                //fixed4 col = tex2D(_MainTex, i.uv);
-                //float2 uvr = round(i.uv);
-                //fixed4 col = lerp(tex2D(_MainTex, i.uv), tex2D(_PR, i.uv), .5);
-                //col.r = _mouseX;
-                //col.b = i.vertex.y/_ScreenParams.y;
-                //clip(col.b-_clicking);
+             
                 float2 uvr=round(i.uv*1024)/1024;
                 //float2 uvr=i.uv;
 
@@ -91,14 +81,8 @@
                 #endif
 
                 fixed4 col = tex2D(_MainTex,i.uv);
-                int2 pp = i.uv*_ScreenParams.xy; //pixel position lookup integer
+                uint2 pp = i.uv*_ScreenParams.xy; //pixel position lookup integer
                 col+=dither_table[pp.x%4][pp.y%4]*(1.0/dPower);
-
-                //fixed4 col = lerp(tex2D(_MainTex,i.uv), tex2D(_PR, mvuv), lerp(round(1-(n)/1.4),1, .5));
-                //fixed4 col = lerp(tex2D(_MainTex,i.uv),tex2D(_PR, mvuv),round(1-(n)/1.4));
-                //fixed4 col = lerp(tex2D(_MainTex,i.uv),tex2D(_PR, mvuv),round(1-(n)/1.4));
-                //clip(col.b - n);
-                //button@0=lossy w/ noise, button@1=total loss
                 col=round(col*cDepth)/cDepth;
                 return col;
             }

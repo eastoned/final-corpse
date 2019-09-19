@@ -23,11 +23,5 @@ public class EastonCustomImageEffect : MonoBehaviour
         Graphics.Blit(src, dst, effectMaterial);
     }
 
-    void Update()
-    {
-        
-        Shader.SetGlobalFloat("_mouseX", Input.mousePosition.x);
-        Shader.SetGlobalFloat("_mouseY", Input.mousePosition.y);
-        //Debug.Log(Input.mousePosition.x);
-    }
+  
 }
