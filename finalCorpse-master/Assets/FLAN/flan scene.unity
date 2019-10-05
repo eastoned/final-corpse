@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00410606, g: 0.0002258024, b: 0.000000063679295,
+  m_IndirectSpecularColor: {r: 0.0041060615, g: 0.00022580227, b: 0.000000063679295,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -12547,10 +12547,11 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133829581}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: b1a5e04ae51004842aba06704a6c2903, type: 3}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: b1a5e04ae51004842aba06704a6c2903, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -13512,7 +13513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc72bffa250a94d0d90259a2ec4de264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  force: 500
 --- !u!114 &1220821467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18591,6 +18592,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1086858392185686646, guid: 7737647c22c1fc64a88d5cd030c352ce,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6352884530688783953, guid: 7737647c22c1fc64a88d5cd030c352ce,
+        type: 3}
+      propertyPath: m_Name
+      value: SpecialMover
+      objectReference: {fileID: 0}
     - target: {fileID: 495908, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -18599,12 +18610,9 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1086858392185686646, guid: 7737647c22c1fc64a88d5cd030c352ce,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11444856, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+    - {fileID: 11469404, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
 --- !u!1 &1672444773 stripped
 GameObject:

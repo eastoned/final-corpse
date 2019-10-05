@@ -40,7 +40,7 @@ public class assassin : MonoBehaviour {
 		if (collider.gameObject == target) {
 			 
 			source.PlayOneShot (scream); 
-			ParticleSystem explodeinstance =  (ParticleSystem) Instantiate(explode, gameObject.transform.position, Quaternion.identity); 
+			ParticleSystem explodeinstance = Instantiate(explode, gameObject.transform.position, Quaternion.identity); 
 			explodeinstance.Play (); 
 
 				gameObject.SetActive (false); 

@@ -15,7 +15,7 @@ public class Controller : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		targetCamera = liveCamera;
-        Cursor.visible = true;
+       
     }
 	
 	// Update is called once per frame
@@ -37,4 +37,9 @@ public class Controller : MonoBehaviour {
 
 		targetCamera.GetComponent<Cam> ().Activated = true;
 	}
+
+    void OnEnable()
+    {
+        Cursor.visible = true;
+    }
 }

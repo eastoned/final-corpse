@@ -3,24 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class movementNew : MonoBehaviour
-
 {
+    public int force;
+    Vector3 movementVector;
+    Rigidbody specialBody;
 
-    public int speed; 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        specialBody = transform.parent.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-    
-        if (Input.GetMouseButton(0)){
-        transform.position += new Vector3(transform.forward.x, 0, transform.forward.z) * Time.deltaTime *speed; 
-        
-        //Debug.Log  ("click down");
+        //randomize movementVector
+        if (Input.GetMouseButtonDown(0))
+        {
+            CycleMovement();
         }
+    }
+
+    void FixedUpdate()
+    {
+        //apply movement
+        if (Input.GetMouseButton(0))
+        {
+            specialBody.AddRelativeForce(movementVector * force);
+        }
+    }
+
+    void CycleMovement()
+    {
+        int clickCounter = Random.Range(0, 4);
+
+        switch (clickCounter)
+        {
+            //forward
+            case 0:
+                movementVector = new Vector3 (0, 0, 1);
+                break;
+            //backward
+            case 1:
+                movementVector = new Vector3(0, 0, -1);
+                break;
+            //left
+            case 2:
+                movementVector = new Vector3(1, 0, 1);
+                break;
+            //right
+            case 3:
+                movementVector = new Vector3(-1, 0, 0);
+                break;
+        }
+
     }
 }

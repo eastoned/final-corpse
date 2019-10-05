@@ -669,9 +669,11 @@
     <Compile Include="Assets\EASTON&apos;s FOLDER\eastons secrets\makeBig.cs" />
     <Compile Include="Assets\EASTON&apos;s FOLDER\eastons secrets\makeGo.cs" />
     <Compile Include="Assets\FLAN\scripts\assassin.cs" />
+    <Compile Include="Assets\FLAN\scripts\assmove.cs" />
     <Compile Include="Assets\FLAN\scripts\floormaker.cs" />
     <Compile Include="Assets\FLAN\scripts\greens.cs" />
     <Compile Include="Assets\FLAN\scripts\lightspread.cs" />
+    <Compile Include="Assets\FLAN\scripts\movementNew.cs" />
     <Compile Include="Assets\FLAN\scripts\NextPart.cs" />
     <Compile Include="Assets\FLAN\scripts\part2.cs" />
     <Compile Include="Assets\FLAN\scripts\shaderStuff.cs" />
