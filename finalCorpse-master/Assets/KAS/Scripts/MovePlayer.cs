@@ -71,11 +71,6 @@ public class MovePlayer : MonoBehaviour {
 	}
 	
 	void Update () {
-        //test
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SceneManager.LoadScene(0);
-        }
 
         if(Vector3.Distance(transform.position, movementPoints[currentDest].position) > 10f)
         {
@@ -168,6 +163,11 @@ public class MovePlayer : MonoBehaviour {
                 }
             }
           
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
 	}
 

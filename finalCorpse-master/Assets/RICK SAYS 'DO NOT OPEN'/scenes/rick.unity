@@ -3580,7 +3580,7 @@ GameObject:
   - component: {fileID: 899452004}
   m_Layer: 5
   m_Name: progress
-  m_TagString: Untagged
+  m_TagString: Progress
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

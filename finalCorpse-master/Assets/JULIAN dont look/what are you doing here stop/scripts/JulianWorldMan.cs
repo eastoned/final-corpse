@@ -32,6 +32,10 @@ public class JulianWorldMan : MonoBehaviour
     {
         Opening();
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     float openingTim, htColorStrength;

@@ -23,13 +23,20 @@ public class ArtifactsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Artifact.collectedArtifact += UpdateArtifacts;     
+        Artifact.collectedArtifact += UpdateArtifacts;
+
+        //already complete from previous save 
+        if (collected == artifacts.Length)
+            Complete();
     }
 
     void UpdateArtifacts(){
-        ++collected;
+        if(collected < artifacts.Length)
+            ++collected;
 
+        progress = GameObject.FindGameObjectWithTag("Progress").GetComponent<Text>();
         progress.text = collected + "/" + artifacts.Length;
+        PlayerPrefs.SetInt("Progress", collected);
 
         if(collected == artifacts.Length)
             Complete();
@@ -43,7 +50,26 @@ public class ArtifactsManager : MonoBehaviour
             if(collectedAllArtifacts != null)
                 collectedAllArtifacts();
 
+            audiosrc = GetComponent<AudioSource>();
             audiosrc.Play();
+        }
+    }
+
+    void OnEnable()
+    {
+        progress = GameObject.FindGameObjectWithTag("Progress").GetComponent<Text>();
+
+        //we have saved value 
+        if(PlayerPrefs.GetInt("Progress") > 0)
+        {
+            collected = PlayerPrefs.GetInt("Progress");
+            progress.text = collected + "/" + artifacts.Length;
+        }
+        //0
+        else
+        {
+            collected = 0;
+            progress.text = "0/7";
         }
     }
 }

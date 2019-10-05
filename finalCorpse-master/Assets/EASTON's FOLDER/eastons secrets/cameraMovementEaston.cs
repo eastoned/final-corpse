@@ -52,6 +52,11 @@ public class cameraMovementEaston : MonoBehaviour
                 Play();
                 break;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     //handle playtime interactions

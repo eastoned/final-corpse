@@ -33,5 +33,6 @@ public class Controller : MonoBehaviour {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         targetCamera = liveCamera;
+        Time.timeScale = 1f;
     }
 }
