@@ -27,7 +27,7 @@ public class cameraMovementEaston : MonoBehaviour
     public bool openingAudioHasPlayed;
 
     public Image fadeOutImage;
-
+    public float transitionSpeed = 15f;
     public static Vector3[] grassPositions = new Vector3[79];
 
     // Start is called before the first frame update
@@ -80,7 +80,7 @@ public class cameraMovementEaston : MonoBehaviour
             night.volume = Mathf.Lerp(night.volume, 1, Time.deltaTime);
             //fadeOutImage.color = Color.Lerp(fadeOutImage.color, new Color(0, 0, 0, 1), Time.deltaTime / 3f);
             if(Time.frameCount%(55/(PlayerPrefs.GetInt("eastonLevel")+1)) == 0){
-                fadeOutImage.rectTransform.localPosition += new Vector3(0, 30, 0);
+                fadeOutImage.rectTransform.localPosition += new Vector3(0, transitionSpeed, 0);
                 fadeOutImage.GetComponent<AudioSource>().Play();
 
 

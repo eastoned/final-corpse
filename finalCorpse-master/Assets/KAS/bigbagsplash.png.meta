@@ -3,7 +3,7 @@ guid: 6a08dd196dd3cb74b961a0b073549769
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -86,7 +86,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2314d15af04b3ad4a85b39922dba49c7
     vertices: []
     indices: 
     edges: []

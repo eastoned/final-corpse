@@ -12,16 +12,6 @@ public class Controller : MonoBehaviour {
 	public Camera liveCamera, inspectCamera;
 	[SerializeField] Camera targetCamera;
 
-	// Use this for initialization
-	void Start () {
-		targetCamera = liveCamera;
-       
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void TogglePerspective(){
 		targetCamera.GetComponent<Cam> ().Activated = false;
@@ -40,6 +30,8 @@ public class Controller : MonoBehaviour {
 
     void OnEnable()
     {
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        targetCamera = liveCamera;
     }
 }

@@ -5062,6 +5062,7 @@ MonoBehaviour:
   night: {fileID: 663640131}
   openingAudioHasPlayed: 0
   fadeOutImage: {fileID: 785095292}
+  transitionSpeed: 10
 --- !u!82 &663640130
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6106,8 +6107,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 58ec6c5db9dd84e76ac6ed65c0cdb385, type: 3}
   m_Type: 0
   m_PreserveAspect: 0

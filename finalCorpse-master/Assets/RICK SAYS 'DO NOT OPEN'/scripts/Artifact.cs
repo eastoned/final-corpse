@@ -74,7 +74,7 @@ public class Artifact : MonoBehaviour {
 
 	protected virtual void Warp(){
 		if(inspecting){
-			Debug.Log("ewasdawdwa");
+			Debug.Log("inspecting " + gameObject.name);
 			if(!warping)
 				StartCoroutine("Warping");
 		}

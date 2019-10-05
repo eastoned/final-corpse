@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class MovePlayer : MonoBehaviour {
 
@@ -37,6 +38,8 @@ public class MovePlayer : MonoBehaviour {
     public ColorGradingModel.Settings colorGrader;
     public bool staticDeath;
     public float staticFallSpeed = 3f;
+
+    public FadeUI whiteOut;
     
 
     void Start () {
@@ -68,6 +71,11 @@ public class MovePlayer : MonoBehaviour {
 	}
 	
 	void Update () {
+        //test
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene(0);
+        }
 
         if(Vector3.Distance(transform.position, movementPoints[currentDest].position) > 10f)
         {
@@ -132,6 +140,11 @@ public class MovePlayer : MonoBehaviour {
         {
             staticFallSpeed += 2.5f;
             transform.Translate(0, staticFallSpeed, 0);
+            //white out transition
+            if(!whiteOut.fadingIn)
+            {
+                whiteOut.FadeIn();
+            }
         }
 
         //lerps fov 
